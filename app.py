@@ -22,10 +22,10 @@ def index():
 # /scrape will run function that we create just beneath it
 @app.route("/scrape")
 def scrape():
-   mars = mongo.db.mars
+   mars = mongo.db.mars_app
    mars_data = scraping.scrape_all()
    mars.update({}, mars_data, upsert=True)
-   return redirect('/', code=302)
+   return redirect("http://localhost:5000/", code=302)
 
 # tell it to run
 if __name__ == "__main__":
